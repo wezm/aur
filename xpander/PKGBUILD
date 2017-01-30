@@ -1,0 +1,24 @@
+# Maintainer: Wesley Moore (wezm) <wes@wezm.net>
+pkgname=xpander
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Lightweight text expander for Linux written in python"
+arch=('any')
+license=('GPL3')
+url="https://github.com/OzymandiasTheGreat/Xpander"
+source=(https://github.com/OzymandiasTheGreat/${pkgname}/archive/${pkgver}.tar.gz)
+depends=('gtk3' 'gobject-introspection' 'python-xlib' 'libappindicator-gtk3' 'xkb-switch-git')
+makedepends=('git' 'python-setuptools')
+provides=('xpander')
+conflicts=('xpander-git')
+md5sums=('SKIP')
+
+build() {
+    cd "${srcdir}/Xpander-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    cd "${srcdir}/Xpander-${pkgver}"
+    python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+}

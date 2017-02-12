@@ -1,0 +1,36 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
+_pkgname="spice-up"
+pkgname="${_pkgname}-git"
+pkgver=0.2.7
+pkgrel=1
+pkgdesc="Create simple and beautiful presentations on the Linux desktop"
+arch=('i686' 'x86_64')
+url="https://github.com/Philip-Scott/Spice-up"
+license=('GPL3')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite-bzr' 'libgee' 'json-glib')
+makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection')
+options=('!libtool')
+conflicts=('spice-up')
+provides=('spice-up')
+source=("${_pkgname}::git+https://github.com/Philip-Scott/Spice-up.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+        echo $(git describe --tags | sed s'/v\.//;s/-/./g')
+}
+
+build() {
+	cd "${_pkgname}"
+        mkdir build
+        cd build
+        cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	make
+}
+
+package() {
+	cd "${_pkgname}"
+	cd build
+	make DESTDIR="${pkgdir}/" install
+}

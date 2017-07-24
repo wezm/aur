@@ -1,0 +1,36 @@
+# Maintainer: Wesley Moore
+
+_pkgname=clipped
+pkgname=$_pkgname-git
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Clipboard Manger for elementary OS"
+url="https://github.com/davidmhewitt/clipped"
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=(gtk3 libgee libxtst sqlite)
+makedepends=(git cmake vala)
+groups=(gnome)
+replaces=(clipped)
+provides=(clipped)
+conflicts=(clipped)
+source=("git+https://github.com/davidmhewitt/clipped.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd clipped
+  git describe --tags | sed 's/-/+/g'
+}
+
+build() {
+  cd clipped
+  [ -d build ] && rm -rf build
+  mkdir build && cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  cd clipped/build
+  make DESTDIR=${pkgdir} install
+}

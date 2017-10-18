@@ -1,0 +1,71 @@
+# Maintainer: Bao Trinh <aur@qubidt.com>
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+# requires that you already have a full copy of this font
+
+pkgname=ttf-pragmatapro
+pkgver=0.826
+pkgrel=1
+pkgdesc="PragmataPro by Fabrizio Schiavi"
+arch=('any')
+url="http://www.fsd.it/shop/fonts/pragmatapro/"
+license=('http://www.fsd.it/fonts/eula.htm')
+depends=('fontconfig' 'xorg-font-utils')
+install=$pkgname.install
+source=(
+  "LICENSE"
+  "PragmataProB_0826.ttf"
+  "PragmataProB_liga_0826.ttf"
+  "PragmataProI_0826.ttf"
+  "PragmataProI_liga_0826.ttf"
+  "PragmataPro_Mono_B_0826.ttf"
+  "PragmataPro_Mono_B_liga_0826.ttf"
+  "PragmataPro_Mono_I_0826.ttf"
+  "PragmataPro_Mono_I_liga_0826.ttf"
+  "PragmataPro_Mono_R_0826.ttf"
+  "PragmataPro_Mono_R_liga_0826.ttf"
+  "PragmataPro_Mono_Z_0826.ttf"
+  "PragmataPro_Mono_Z_liga_0826.ttf"
+  "PragmataProR_0826.ttf"
+  "PragmataProR_liga_0826.ttf"
+  "PragmataProZ_0826.ttf"
+  "PragmataProZ_liga_0826.ttf"
+)
+
+sha256sums=(
+  '2b1f9c5606e7003747416f3def91d342e99298e74c720ced9e47202f9893fcfb'
+  '965fb2131cde4e0569ee122e0e44a3fa191307dbcf3e875a3955e436ba8fece4'
+  '753a8c8a6df10ce9fff035e2f282286a3ccca0342e9d7d6fe5701b7222f78a3e'
+  '5f215a51adbdae3ee4d56e61ce59880815dddd6b3794878e38d5f876af280ae6'
+  'f9bd639cf58a5b6e8a0102932a0a8420cb43e5854960a20fc8e1ed7255e2e9b3'
+  '12f00939b7df7bbed2ba8ac14de295f4708c425909db909d54d6dc0f6f6c0ae3'
+  'd95a9350319642f0fd6676a616331a6a257ab5eceac3b0732fc32ca3c2d90282'
+  '83f05f0f6c720d985246ce80c2d71f1255c4e95d02b119e35b44c24fc26e0e1e'
+  '0ec77c47adbfeadc11080f28b7353b074cc75a7f1d677a15a53a2a070345c344'
+  '2c74f9a0757c96ebada882a72b489a4c3222db7a69df724428bcdb217ce3d290'
+  'c809c99b6ca14ca9c9dc6a1973ccff8145a8f8902694ab2dc9611dab6ab9d994'
+  '82c7063f5db2dbbc536aab954a0915d7d757f469803e01cd8dfef3e626304701'
+  '8ad0e5d71130e47ecf77904fbf63f3c6c223406f63e78a8b31f77d614709df28'
+  '69711ce2c12aa90e7a3fe3eb0483fda0b92232c9e8138fd3c887410c613781e0'
+  'b28aed5127237c6a104833117de762b73861a4411101d614402e86568c584c95'
+  '701ec76ad1212b0e79f72e5e6383fd4f87d451e45684ad451b5eff9074d0f8eb'
+  'c77a4e6ae5351bfef3155d2e800ab42fac6ec4d11f71ed01e9da43a5d0fa2bbb'
+)
+
+package() {
+  msg "You need a full copy of this font in order to install it"
+  for i in "${source[@]}"
+  do
+    if [[ ! -f $i ]]; then
+      error "${i} not found"
+      return 1
+    else
+      msg "Found ${i}"
+    fi
+  done
+  msg "Found all files, installing..."
+
+  install -d "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+}

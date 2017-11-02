@@ -1,0 +1,23 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=ttf-nunito-sans
+pkgver=1.0
+pkgrel=1
+pkgdesc="Variant of Nunito with non-rounded terminals by Jacques Le Bailly"
+arch=('any')
+url="https://github.com/Fonthausen/NunitoSans"
+license=('custom:OFL')
+depends=('fontconfig' 'xorg-font-utils')
+install=$pkgname.install
+source=(
+  https://www.fontsquirrel.com/fonts/download/nunito-sans
+)
+# checksum changes with every download
+sha256sums=(SKIP)
+
+package() {
+  install -d "$pkgdir/usr/share/fonts/TTF/"
+  install -m644 -- *.ttf "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 "SIL Open Font License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

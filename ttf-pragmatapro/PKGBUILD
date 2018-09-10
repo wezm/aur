@@ -5,7 +5,7 @@
 
 pkgname=ttf-pragmatapro
 pkgver=0.827
-pkgrel=1
+pkgrel=2
 pkgdesc="PragmataPro by Fabrizio Schiavi"
 arch=('any')
 url="http://www.fsd.it/shop/fonts/pragmatapro/"
@@ -33,7 +33,7 @@ source=(
 )
 
 sha256sums=('2b1f9c5606e7003747416f3def91d342e99298e74c720ced9e47202f9893fcfb'
-            'd2ba3b80f38422ee29a4a6cb26f59396e301c12cace0b9442d2698d6a49b719a'
+            '3fbe005fe464a4e9e311c5a8ae5b14557b8e6c1f7e6d0d31f24145f4b5d8bb95'
             'fd062a6ddca237d0631d1cbcca30d735c7dd360608c9236ce1da5d0e58aa4e2b'
             '083c21276c8afbb6a758f46b367ce52c0f4306bf4766f79964d7a0eb3722b403'
             '6777738b9f4d0c69946f44a9ee1a9c39e7b3e07d3b9b540eb7e0462882f4145a'
@@ -42,7 +42,7 @@ sha256sums=('2b1f9c5606e7003747416f3def91d342e99298e74c720ced9e47202f9893fcfb'
             '86a5687dbcebc0e8cdb38704429b5cf44ab5bf72846aba2fd28488580eca89c1'
             'db2eb1e1d550b35165747e3e8e180990808d8463f302a2200b7b8aee5ca9d21d'
             '72dcaf8f1d7ea258a6a8e6c7952ffe6f6a0c5fff22956af787fc032617d562ef'
-            '82e37f50d6c50fb9ee99a62f019710365b0aad5767f31dd95b623b54114d35c6'
+            'b5ea8a0231ef9e640759131f6e4d1325a85853927b142bd82bb226070d2fd52e'
             'f22099f5abc618a05e75ae2df25e0a00c3c3632219edfc58e0ef472bab6be648'
             '2e800903f625edc7d6f811589dfaa6c16604a5deffcaf7c0a47ac2032543ddfe'
             'e90b46bd519aba5607fec8d42c206a1820e3d5e709cdde8fbee0e6214ea3e69c'

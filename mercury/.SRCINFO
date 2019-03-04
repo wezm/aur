@@ -1,0 +1,18 @@
+pkgbase = mercury
+	pkgdesc = The mercury language compiler.
+	pkgver = rotd20180319
+	pkgrel = 1
+	url = http://www.mercurylang.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	depends = gcc
+	depends = make
+	options = staticlibs
+	source = https://github.com/Mercury-Language/mercury-srcdist/archive/rotd-2018-03-19.tar.gz
+	sha256sums = d9a5557923ff37f182e3e68bda79159da4fac50601f0ff971578034a36b2ec8c
+
+pkgname = mercury
+

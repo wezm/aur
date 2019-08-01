@@ -1,0 +1,105 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=wezm
+pkgver=1.0.0
+pkgrel=1
+pkgdesc='Meta package for my Arch Linux installs'
+arch=('x86_64')
+url="https://github.com/wezm/aur/tree/master/wezm"
+license=('MIT')
+# base-devel
+depends=(
+  alacritty
+  awesome
+  aws-cli
+  bat
+  cmake
+  compton
+  copyq
+  dmidecode
+  dunst
+  evince
+  exa
+  fd
+  firefox
+  fragments
+  git
+  gnome-calculator
+  gnome-characters
+  gnome-font-viewer
+  gnome-keyring
+  gnome-screensaver
+  gnumeric
+  gthumb
+  jdk-openjdk
+  libva-mesa-driver
+  libva-utils
+  light-locker
+  lightdm
+  lightdm-gtk-greeter
+  musl
+  neovim
+  networkmanager
+  openssh
+  openssl-1.0
+  pass
+  passff-host
+  pavucontrol
+  pciutils
+  pkgconf
+  podman-docker
+  polkit-gnome
+  pulseaudio
+  pulseaudio-alsa
+  restic
+  ripgrep
+  rsync
+  rustup
+  shotgun
+  skim
+  slop
+  sudo
+  sxiv
+  tex-gyre-fonts
+  tig
+  tilda
+  ttf-joypixels
+  virt-manager
+  whois
+  wqy-microhei
+  xdg-user-dirs
+  xdg-utils
+  xdotool
+  xorg-server
+  xorg-xdpyinfo
+  xorg-xprop
+  xorg-xrandr
+  zsh
+)
+optdepends=(
+  'amd-ucode: AMD microcode'
+  'auracle-git: AUR'
+  'chars: AUR'
+  'intel-ucode: Intel microcode'
+  'xf86-video-amdgpu: AMD GPU drivers'
+  'eva: AUR'
+  'factorio: AUR'
+  'jetbrains-toolbox: AUR'
+  'slack-desktop: AUR'
+  'ttf-pragmatapro: AUR'
+  'mercury: AUR'
+  'mdcat: AUR'
+)
+conflicts=()
+makedepends=()
+# source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+# sha256sums=('0560cf35cfe79ec4dbc57c1d8d9818c94871d92af896a7644fda3ebedd4d6065')
+
+# build() {
+#   cd "$pkgname-$pkgver"
+#   cargo build --release
+# }
+
+# package() {
+#   install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+# }

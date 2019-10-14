@@ -1,0 +1,16 @@
+pkgbase = libstriptags-git
+	pkgdesc = library for stripping html tags
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/wezm/libstriptags
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/wezm/libstriptags.git
+	md5sums = SKIP
+
+pkgname = libstriptags-git
+

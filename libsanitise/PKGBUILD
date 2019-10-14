@@ -1,0 +1,24 @@
+# Maintainer: wes@wezm.net
+_pkgname=libstriptags
+pkgname=${_pkgname}-git
+pkgver=3
+pkgrel=1
+pkgdesc='library for stripping html tags'
+arch=('i686' 'x86_64')
+url="https://github.com/wezm/libstriptags"
+license=('MIT')
+depends=()
+makedepends=('rust' 'cargo' 'git')
+source=("git+https://github.com/wezm/libstriptags.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git rev-list --count HEAD
+}
+
+package() {
+    cd "$srcdir/$_pkgname"
+    cargo build --release --locked
+    install -Dm755 "$srcdir/$_pkgname/target/release/$_pkgname.so" "$pkgdir/usr/lib/$_pkgname.so"
+}

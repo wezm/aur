@@ -1,7 +1,7 @@
 # Maintainer: wes@wezm.net
 _pkgname=libstriptags
 pkgname=${_pkgname}-git
-pkgver=5
+pkgver=8
 pkgrel=1
 pkgdesc='library for stripping html tags'
 arch=('i686' 'x86_64')

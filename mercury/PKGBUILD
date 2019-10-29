@@ -5,13 +5,13 @@
 pkgname=mercury
 _pkgver="rotd-2018-03-19"
 pkgver=rotd20180319
-pkgrel=1
+pkgrel=2
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
 license=('GPL')
 depends=('gcc' 'make')
-makedepends=('flex' 'bison')
+makedepends=('flex' 'bison' 'gcc8')
 options=('staticlibs')
 source=(https://github.com/Mercury-Language/mercury-srcdist/archive/$_pkgver.tar.gz)
 sha256sums=('d9a5557923ff37f182e3e68bda79159da4fac50601f0ff971578034a36b2ec8c')
@@ -19,9 +19,11 @@ sha256sums=('d9a5557923ff37f182e3e68bda79159da4fac50601f0ff971578034a36b2ec8c')
 build() {
   cd "$srcdir"/mercury-srcdist-$_pkgver
 
-  ./configure --prefix=/usr --mandir=/usr/share/man \
-              --infodir=/usr/share/info \
-              --enable-libgrades=asm_fast.gc,asm_fast.gc.debug.stseg,hlc.gc,hlc.gc.memprof,hlc.gc.prof,hlc.par.gc,asm_fast.gc.profdeep.stseg
+  ./configure \
+      --with-cc=gcc-8 \
+      --prefix=/usr --mandir=/usr/share/man \
+      --infodir=/usr/share/info \
+      --enable-libgrades=asm_fast.gc,asm_fast.gc.debug.stseg,hlc.gc,hlc.gc.memprof,hlc.gc.prof,hlc.par.gc,asm_fast.gc.profdeep.stseg
 
   make PARALLEL="$MAKEFLAGS"
 }

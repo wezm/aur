@@ -5,13 +5,14 @@
 
 pkgname=mercury
 pkgver=20.06.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
 license=('GPL')
 depends=('gcc' 'make')
 makedepends=('flex' 'bison')
+options=('staticlibs')
 source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.xz)
 sha256sums=('b1825d7d8efe5c794a234094c8f35ecebc7b22f8dbe8f78012445bf3cd1ead06')
 

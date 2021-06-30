@@ -1,0 +1,25 @@
+pkgname=mold
+pkgver=0.9.1
+_pkgver=$pkgver
+pkgrel=1
+pkgdesc='Fast linker'
+arch=(x86_64)
+url='https://github.com/rui314/mold'
+license=('unknown')
+depends=(xxhash mimalloc)
+makedepends=(clang cmake git)
+source=("https://github.com/rui314/mold/archive/refs/tags/v$_pkgver.tar.gz" Makefile)
+sha256sums=('02b156de6cd2d94fea4eed9748a7c96955673d810ec672359f603f2f90e2990d'
+            '489bce8b59fb6b1eaeeb31edaed0f73b9160a1c4bdc3e70be9f81dacc4b1745a')
+
+build() {
+  cd "$pkgname-$_pkgver"
+  CXXFLAGS+=" -fPIC"
+  LDFLAGS+=" -pie"
+  make -f "$srcdir/Makefile" SYSTEM_MIMALLOC=1
+}
+
+package() {
+  cd "$pkgname-$_pkgver"
+  make -f "$srcdir/Makefile" install PREFIX="$pkgdir/usr"
+}

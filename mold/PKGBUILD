@@ -1,27 +1,28 @@
 pkgname=mold
-pkgver=0.9.2
+pkgver=0.9.3
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc='Fast linker'
 arch=(x86_64)
 url='https://github.com/rui314/mold'
-license=('unknown')
+license=('AGPL3')
 depends=(xxhash mimalloc)
 makedepends=(clang cmake git)
-source=("https://github.com/rui314/mold/archive/refs/tags/v$_pkgver.tar.gz" Makefile)
+source=("https://github.com/rui314/mold/archive/refs/tags/v$_pkgver.tar.gz")
 # For testing pre-release branches:
 # source=("${pkgname}-${pkgver}::git+https://github.com/rui314/mold#branch=release/${pkgver}" Makefile)
-sha256sums=('09b624e6bf5240a59aac5eb961b7dde2ea9b439d3e017a1e393034a10fe75b27'
-            '489bce8b59fb6b1eaeeb31edaed0f73b9160a1c4bdc3e70be9f81dacc4b1745a')
+sha256sums=('bb4dea1e6b04ef989ffd4bd32c91a4f03fcd4853c849a9d0aae2a28e56aaa99f')
 
 build() {
   cd "$pkgname-$_pkgver"
   CXXFLAGS+=" -fPIC"
   LDFLAGS+=" -pie"
-  make -f "$srcdir/Makefile" SYSTEM_MIMALLOC=1
+  make SYSTEM_MIMALLOC=1
 }
 
 package() {
-  cd "$pkgname-$_pkgver"
-  make -f "$srcdir/Makefile" install PREFIX="$pkgdir/usr"
+  install -Dm 644 "$srcdir/$pkgname-$_pkgver/mold" "$pkgdir/usr/bin/mold"
+  install -m 755 -d "$pkgdir/usr/lib/mold"
+  install -m 644 "$srcdir/$pkgname-$_pkgver/mold-wrapper.so" "$pkgdir/usr/lib/mold"
+  install -Dm 644 "$srcdir/$pkgname-$_pkgver/docs/mold.1" "$pkgdir/usr/share/man/man1/mold.1"
 }

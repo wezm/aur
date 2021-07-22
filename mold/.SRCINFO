@@ -1,18 +1,16 @@
 pkgbase = mold
 	pkgdesc = Fast linker
-	pkgver = 0.9.2
-	pkgrel = 2
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://github.com/rui314/mold
 	arch = x86_64
-	license = unknown
+	license = AGPL3
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	depends = xxhash
 	depends = mimalloc
-	source = https://github.com/rui314/mold/archive/refs/tags/v0.9.2.tar.gz
-	source = Makefile
-	sha256sums = 09b624e6bf5240a59aac5eb961b7dde2ea9b439d3e017a1e393034a10fe75b27
-	sha256sums = 489bce8b59fb6b1eaeeb31edaed0f73b9160a1c4bdc3e70be9f81dacc4b1745a
+	source = https://github.com/rui314/mold/archive/refs/tags/v0.9.3.tar.gz
+	sha256sums = bb4dea1e6b04ef989ffd4bd32c91a4f03fcd4853c849a9d0aae2a28e56aaa99f
 
 pkgname = mold

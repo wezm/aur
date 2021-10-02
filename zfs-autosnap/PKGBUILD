@@ -1,0 +1,36 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=zfs-autosnap
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Minimal viable ZFS autosnapshot tool'
+arch=('x86_64')
+url='https://github.com/wezm/zfs-autosnap'
+license=('MIT')
+makedepends=('cargo')
+source=("$url/archive/$pkgver.tar.gz"
+        "zfs-autosnap-gc.service"
+        "zfs-autosnap-gc.timer"
+        "zfs-autosnap-snap.service"
+        "zfs-autosnap-snap.timer")
+sha256sums=('89fa26636976426c8446cdfdf6dbfcf363b8a5681e4923bc7afe8c2c4105ea80'
+            '3ca7a11b5faa2855e0fc7bb785cbf836ae160a32a61fd3cbe0def0f26ffa37e8'
+            '91f2503a093b9da5eebdfc237ba92edffe6639a76a49025d0e1edbe536b5d405'
+            'b56faafb075d112368af43fc02e2ff445e024d07e15f390761cf5994730ad39e'
+            'cbfe9edeb66f8ca7319bcc2babfb08c747ccda89c11e191be40ffd7a1636b3ca')
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release
+}
+
+package() {
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Timers
+  install -Dm644 "$srcdir/zfs-autosnap-gc.service" "$pkgdir/etc/systemd/system/zfs-autosnap-gc.service"
+  install -Dm644 "$srcdir/zfs-autosnap-gc.timer" "$pkgdir/etc/systemd/system/zfs-autosnap-gc.timer"
+  install -Dm644 "$srcdir/zfs-autosnap-snap.service" "$pkgdir/etc/systemd/system/zfs-autosnap-snap.service"
+  install -Dm644 "$srcdir/zfs-autosnap-snap.timer" "$pkgdir/etc/systemd/system/zfs-autosnap-snap.timer"
+}

@@ -1,0 +1,20 @@
+pkgbase = zfs-autosnap
+	pkgdesc = Minimal viable ZFS autosnapshot tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wezm/zfs-autosnap
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/wezm/zfs-autosnap/archive/0.2.0.tar.gz
+	source = zfs-autosnap-gc.service
+	source = zfs-autosnap-gc.timer
+	source = zfs-autosnap-snap.service
+	source = zfs-autosnap-snap.timer
+	sha256sums = 89fa26636976426c8446cdfdf6dbfcf363b8a5681e4923bc7afe8c2c4105ea80
+	sha256sums = 3ca7a11b5faa2855e0fc7bb785cbf836ae160a32a61fd3cbe0def0f26ffa37e8
+	sha256sums = 91f2503a093b9da5eebdfc237ba92edffe6639a76a49025d0e1edbe536b5d405
+	sha256sums = b56faafb075d112368af43fc02e2ff445e024d07e15f390761cf5994730ad39e
+	sha256sums = cbfe9edeb66f8ca7319bcc2babfb08c747ccda89c11e191be40ffd7a1636b3ca
+
+pkgname = zfs-autosnap

@@ -3,7 +3,7 @@
 pkgname=emote
 pkgver=3.0.3
 _pkgref=ff40e3d66b251aaf2e91116ba177e59f087e1021
-pkgrel=3
+pkgrel=4
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
@@ -15,11 +15,9 @@ source=(
   'setup.py'
   'fix-skin-tone-static-path.patch'
 )
-sha512sums=(
-  'SKIP'
-  'ef8caea8ad9e9bc0487dd8c816561027adda743c1e8e2779a64e7ae99fb227c820f31ef9c87fb910bae7a8ffc623e5e2e1a53a8c69ce0a35ad96557e97a5a949'
-  '52d3dce0cecfe62ccc4469b4b35b27c8332d6dce2d1e2dd5603c85a3025fb4a415df303eaaace5579c4204923cbd8d86846deb1026a01f8b201452453c61746f'
-)
+sha512sums=('75d909cca2cc22ea748061abd498bdf147b10cac55850fe129de57d2323e34dd79dc6463ebee3ebd620f6ab28adef13dd3f11d31e8d902a648546bddf2cacb86'
+            'ef8caea8ad9e9bc0487dd8c816561027adda743c1e8e2779a64e7ae99fb227c820f31ef9c87fb910bae7a8ffc623e5e2e1a53a8c69ce0a35ad96557e97a5a949'
+            '41654850b29adf5249a6bac2866778bf2d8843fef6d1a479c61c5a2d600cf1eae475daa64a444219b17d4f266f842a5ee1cc268396e8a6e2027932cd7a28d52f')
 
 build() {
   # Replace setup.py
@@ -46,4 +44,5 @@ package() {
   install -d -m 0755 "$pkgdir/etc/xdg/autostart"
   install -m 0644 "$pkgdir/usr/share/applications/emote.desktop" \
     "$pkgdir/etc/xdg/autostart/emote.desktop"
+  rm "$pkgdir/usr/lib/python3.9/site-packages/emote/static/NotoColorEmoji.ttf"
 }

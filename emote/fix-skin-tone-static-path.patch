@@ -22,7 +22,7 @@ index 646bd85..e6cae7b 100644
 -    manimpango.register_font(f"{config.snap_root}/static/NotoColorEmoji.ttf")
 -else:
 -    manimpango.register_font("static/NotoColorEmoji.ttf")
-+manimpango.register_font(f"{config.static_root}/NotoColorEmoji.ttf")
++#manimpango.register_font(f"{config.static_root}/NotoColorEmoji.ttf")
  
  settings = Gtk.Settings.get_default()
  

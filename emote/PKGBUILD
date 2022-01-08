@@ -44,5 +44,5 @@ package() {
   install -d -m 0755 "$pkgdir/etc/xdg/autostart"
   install -m 0644 "$pkgdir/usr/share/applications/emote.desktop" \
     "$pkgdir/etc/xdg/autostart/emote.desktop"
-  rm "$pkgdir/usr/lib/python3.9/site-packages/emote/static/NotoColorEmoji.ttf"
+  rm "$pkgdir/usr/lib/python3.10/site-packages/emote/static/NotoColorEmoji.ttf"
 }

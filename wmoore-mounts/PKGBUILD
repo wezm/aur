@@ -1,0 +1,21 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=wmoore-mounts
+pkgver=0.1.0
+pkgrel=2
+pkgdesc='Systemd mount units for Source and Downloads mounts'
+arch=('any')
+url='https://www.wezm.net/'
+license=('MIT')
+source=("home-wmoore-Source.mount"
+        "home-wmoore-Downloads.mount")
+sha256sums=('299c89fd4a5974665a7029901df0c3b559afd4c455893c2d3599b14ce7b2f1e2'
+            '845b35157896682247937de15310fc3a79169ca4a7333ddb880eb358ba828a27')
+
+# build() {
+# }
+
+package() {
+  install -Dm644 "$srcdir/home-wmoore-Source.mount" "$pkgdir/etc/systemd/system/home-wmoore-Source.mount"
+  install -Dm644 "$srcdir/home-wmoore-Downloads.mount" "$pkgdir/etc/systemd/system/home-wmoore-Downloads.mount"
+}

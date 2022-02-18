@@ -1,0 +1,31 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=chimera-bootstrap
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Meta package for my bootstrapping Chimera Linux'
+arch=('x86_64')
+url="https://github.com/wezm/aur/tree/master/chimera-bootstrap"
+license=('Apache')
+# base-devel
+depends=(
+  python
+  alpine-apk-tools
+  git
+  bubblewrap
+  fakeroot
+)
+# optdepends=()
+# conflicts=()
+# makedepends=()
+# source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+# sha256sums=('0560cf35cfe79ec4dbc57c1d8d9818c94871d92af896a7644fda3ebedd4d6065')
+
+# build() {
+#   cd "$pkgname-$pkgver"
+#   cargo build --release
+# }
+
+# package() {
+#   install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+# }

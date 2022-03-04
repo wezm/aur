@@ -1,6 +1,6 @@
 pkgbase = mercury
 	pkgdesc = The mercury language compiler.
-	pkgver = rotd20180319
+	pkgver = 2022.02.26
 	pkgrel = 1
 	url = http://www.mercurylang.org/
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = mercury
 	depends = gcc
 	depends = make
 	options = staticlibs
-	source = https://github.com/Mercury-Language/mercury-srcdist/archive/rotd-2018-03-19.tar.gz
-	sha256sums = d9a5557923ff37f182e3e68bda79159da4fac50601f0ff971578034a36b2ec8c
+	source = http://dl.mercurylang.org/rotd/mercury-srcdist-rotd-2022-02-26.tar.xz
+	sha256sums = 000a1dd1d0c0ab4ffe4167d1c33e42d6f9a8b04078cc28ca2ce130af5445b2d9
 
 pkgname = mercury
-

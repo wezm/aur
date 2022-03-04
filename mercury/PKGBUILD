@@ -4,8 +4,9 @@
 # Contributor: Bart Verhoeven <bartverhoeven@live.com>
 
 pkgname=mercury
-pkgver=20.06.1
-pkgrel=2
+pkgver=2022.02.26
+_pkgver=2022-02-26
+pkgrel=1
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
@@ -13,11 +14,11 @@ license=('GPL')
 depends=('gcc' 'make')
 makedepends=('flex' 'bison')
 options=('staticlibs')
-source=(http://dl.mercurylang.org/release/mercury-srcdist-${pkgver}.tar.xz)
-sha256sums=('b1825d7d8efe5c794a234094c8f35ecebc7b22f8dbe8f78012445bf3cd1ead06')
+source=(http://dl.mercurylang.org/rotd/mercury-srcdist-rotd-${_pkgver}.tar.xz)
+sha256sums=('000a1dd1d0c0ab4ffe4167d1c33e42d6f9a8b04078cc28ca2ce130af5445b2d9')
 
 build() {
-  cd "$srcdir"/mercury-srcdist-$pkgver
+  cd "$srcdir"/mercury-srcdist-rotd-$_pkgver
 
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --infodir=/usr/share/info \
@@ -29,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/mercury-srcdist-$pkgver
+  cd "$srcdir"/mercury-srcdist-rotd-$_pkgver
 
   make DESTDIR="$pkgdir" \
        INSTALL_PREFIX="$pkgdir"/usr \

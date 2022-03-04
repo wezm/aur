@@ -2,7 +2,7 @@
 
 pkgname=zfs-autosnap
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal viable ZFS autosnapshot tool'
 arch=('x86_64')
 url='https://github.com/wezm/zfs-autosnap'
@@ -14,9 +14,9 @@ source=("$url/archive/$pkgver.tar.gz"
         "zfs-autosnap-snap.service"
         "zfs-autosnap-snap.timer")
 sha256sums=('89fa26636976426c8446cdfdf6dbfcf363b8a5681e4923bc7afe8c2c4105ea80'
-            '3ca7a11b5faa2855e0fc7bb785cbf836ae160a32a61fd3cbe0def0f26ffa37e8'
+            'a91e20c3cc91c5829ac6a703b85e699052f8cd6bf76cf9ce42fcbdb10c5b28f8'
             '91f2503a093b9da5eebdfc237ba92edffe6639a76a49025d0e1edbe536b5d405'
-            'b56faafb075d112368af43fc02e2ff445e024d07e15f390761cf5994730ad39e'
+            '7a04dea34af785538899c1e3bb73d1179426468e7c8ce27d2197b531e38e684f'
             'cbfe9edeb66f8ca7319bcc2babfb08c747ccda89c11e191be40ffd7a1636b3ca')
 
 build() {

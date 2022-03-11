@@ -1,0 +1,15 @@
+--- a/Makefile
++++ b/Makefile
+@@ -8,11 +8,7 @@
+ TARGET_BUILDDIR = release
+ UNAME := $(shell uname)
+ 
+-ifeq ($(UNAME), Linux)
+-  BUILD_NVIDIA = true
+-else
+-  BUILD_NVIDIA = false
+-endif
++BUILD_NVIDIA = false
+ 
+ STATIC_TARGET = x86_64-unknown-linux-musl
+ CC_STATIC_TARGET = x86_64_unknown_linux_musl

@@ -1,0 +1,26 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+pkgname=rc-visualiser
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Visualise RC sticks"
+arch=("x86_64")
+url="https://github.com/wezm/rc-visualiser"
+license=('MIT' 'Apache')
+depends=('cairo' 'sdl2')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f4f1074d811f04ebecaf7d30143307f9ba0ec218efe9c6bc2d812f083ad7922f')
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  for license in APACHE MIT; do install -Dm644 "LICENSE-$license" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-$license"; done
+}
+

@@ -1,0 +1,15 @@
+pkgbase = rc-visualiser
+	pkgdesc = Visualise RC sticks
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/wezm/rc-visualiser
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = cairo
+	depends = sdl2
+	source = rc-visualiser-0.1.0.tar.gz::https://github.com/wezm/rc-visualiser/archive/0.1.0.tar.gz
+	sha256sums = f4f1074d811f04ebecaf7d30143307f9ba0ec218efe9c6bc2d812f083ad7922f
+
+pkgname = rc-visualiser

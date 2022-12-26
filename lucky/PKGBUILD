@@ -1,0 +1,33 @@
+# Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
+
+pkgname=lucky
+pkgver=1.0.0rc1
+_pkgver=1.0.0-rc1
+pkgrel=1
+pkgdesc='A Crystal command-line tool for generating new Lucky Web Applications'
+arch=('x86_64')
+url='https://github.com/luckyframework/lucky_cli'
+license=('MIT')
+depends=('crystal'
+         'shards')
+source=("${url}/archive/v${_pkgver}.tar.gz")
+sha256sums=('5b88bf60e9632cbb7b79e3f5f0bb1280f0b31e2f05f397199622ffc8126b4602')
+provides=('lucky')
+conflicts=('lucky-git')
+
+build() {
+  cd "lucky_cli-${_pkgver}"
+
+  # Install dependencies
+  PATH="/usr/bin" shards install --without-development
+
+  # Build lucky cli
+  PATH="/usr/bin" shards build --production
+}
+
+package() {
+  cd "lucky_cli-${_pkgver}"
+
+  install -Dm755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

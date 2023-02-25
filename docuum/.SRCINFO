@@ -1,0 +1,23 @@
+pkgbase = docuum
+	pkgdesc = LRU eviction of Docker images.
+	pkgver = 0.21.1
+	pkgrel = 2
+	url = https://github.com/stepchowfun/docuum
+	install = docuum.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = docker
+	conflicts = docuum-git
+	backup = etc/default/docuum
+	source = docuum-0.21.1.tar.gz::https://static.crates.io/crates/docuum/docuum-0.21.1.crate
+	source = docuum.service
+	sha512sums = 4bf4450b24bf264262c2ea87b347eaa5b3a679820a3e1982a05222eb574205a3055f9fe19a00f9214d1b42ee0b2d1ca9d066b1ae713fc4e42383e83059c5042a
+	sha512sums = 377e3368655e89184b96241c0e638ef64d7084da1ed23e02450c054740547667697147c9864844c25fd0fc11ec0c5eab30124de2e6d2c0466e038a59f191f6ff
+
+pkgname = docuum

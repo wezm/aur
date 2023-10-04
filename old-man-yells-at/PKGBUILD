@@ -1,0 +1,37 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=old-man-yells-at
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Make Abe yell at stuff!"
+arch=('x86_64')
+url="https://github.com/oncilla/old-man-yells-at"
+license=('Apache-2.0')
+makedepends=('go')
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ae06cf68f02130293bb201a01e6d6bb6a85195440d155f0f1e7e2ab9bd07c76a')
+
+prepare(){
+  cd "$pkgname-$pkgver"
+  mkdir -p build/
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build ./...
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  go test ./...
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
+}

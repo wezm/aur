@@ -1,7 +1,7 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=docuum
-pkgver=0.21.1
-pkgrel=2
+pkgver=0.23.1
+pkgrel=1
 pkgdesc="LRU eviction of Docker images."
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/stepchowfun/docuum"
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 backup=("etc/default/${pkgname}")
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "${pkgname}.service")
-sha512sums=('4bf4450b24bf264262c2ea87b347eaa5b3a679820a3e1982a05222eb574205a3055f9fe19a00f9214d1b42ee0b2d1ca9d066b1ae713fc4e42383e83059c5042a'
+sha512sums=('4a4d4e6c962c85ceae919d4223e038d38146de7ae4dfb300e25b1296555fb9118085904c522d5c5db81bf8db5757e09a308175c31c818a27f3d83a458f95da9f'
             '377e3368655e89184b96241c0e638ef64d7084da1ed23e02450c054740547667697147c9864844c25fd0fc11ec0c5eab30124de2e6d2c0466e038a59f191f6ff')
 
 prepare() {
@@ -25,13 +25,13 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features -- --skip code_str_display
+  cargo test --frozen -- --skip code_str_display
   # FIXME broken test skipped
 }
 

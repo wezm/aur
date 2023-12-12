@@ -1,0 +1,44 @@
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+
+pkgname=cyberscript
+pkgver=0.3
+pkgrel=1
+pkgdesc='A fast, efficient, and concurrent scripting language'
+arch=('x86_64')
+url='https://cyberscript.dev/'
+license=('MIT')
+depends=('glibc')
+makedepends=('git' 'zig')
+options=('!debug')
+_commit='13a7bef28a5dcc766e0694ce8d053b3dc0d9812e'
+# source=("$pkgname::git+https://github.com/fubark/cyber#commit=$_commit")
+# b2sums=('SKIP')
+source=("https://github.com/fubark/cyber/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1e9663f604909ed66ca5f4e007815ce38f0655b7a1ae13d2631c5adfb61a1dc3')
+
+build() {
+  cd "cyber-$pkgver"
+
+  # set env vars
+  #export BUILD="$(git rev-list --count HEAD)"
+  #export COMMIT="$(git rev-parse --short HEAD)"
+
+  zig build cli \
+    -Doptimize=ReleaseFast \
+    -Dtarget="$CARCH-linux-gnu" \
+    -Dcpu=baseline
+}
+
+package() {
+  cd "cyber-$pkgver"
+
+  # binary
+  install -vDm755 -t "$pkgdir/usr/bin" zig-out/bin/cyber
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  cp -vr docs examples "$pkgdir/usr/share/doc/$pkgname"
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}

@@ -1,0 +1,17 @@
+# Maintainer: Wesley Moore <wes@wezm.net>
+
+pkgname=httpstatus
+pkgver=f3bb175
+_pkgver="f3bb175630a8cce90c23f3005a0d5814a0544e9d"
+pkgrel=1
+pkgdesc="HTTP status codes man page"
+arch=('any')
+url="https://github.com/jschauma/httpstatus"
+license=('CUSTOM')
+source=("$pkgname-$pkgver.zip::https://codeload.github.com/jschauma/httpstatus/zip/f3bb175630a8cce90c23f3005a0d5814a0544e9d")
+sha256sums=('e81b1911add684b5586da77a5cddd0dec7446949c70d57933b9eb9b3d48d832e')
+
+package() {
+  cd "$srcdir/$pkgname-$_pkgver"
+  PREFIX="$pkgdir" make install
+}

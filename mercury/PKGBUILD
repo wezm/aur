@@ -4,9 +4,9 @@
 # Contributor: Bart Verhoeven <bartverhoeven@live.com>
 
 pkgname=mercury
-pkgver=2023.12.20
-_pkgver=2023-12-20
-pkgrel=2
+pkgver=2024.02.27
+_pkgver=2024-02-27
+pkgrel=1
 pkgdesc="The mercury language compiler."
 arch=('i686' 'x86_64')
 url="http://www.mercurylang.org/"
@@ -15,7 +15,7 @@ depends=('gcc8' 'make')
 makedepends=('flex' 'bison')
 options=('staticlibs')
 source=(http://dl.mercurylang.org/rotd/mercury-srcdist-rotd-${_pkgver}.tar.xz)
-sha256sums=('e906c452d01a2750fef96fff30134ec678c80dac1a7fbc24786bc1af51eaa98a')
+sha256sums=('f5ddefddf687d0d4d5ddcb9ed83e8710f21bd1ce0c303bdc1131dd3541d1e36d')
 
 build() {
   cd "$srcdir"/mercury-srcdist-rotd-$_pkgver
@@ -39,6 +39,4 @@ package() {
        MERCURY_COMPILER="$pkgdir"/usr/bin/mercury_compile \
        MERCURY_CONFIG_DIR="$pkgdir"/usr/lib/mercury \
        PARALLEL="$MAKEFLAGS" CC=gcc-8 AR=gcc-ar-8 install
-
-  rm "${pkgdir}"/usr/bin/{mdb,mercury,mprof}.bat
 }
